@@ -6,6 +6,10 @@ import reportWebVitals from './reportWebVitals';
 
 import { StoreProvider } from './Store.js';
 
+import {server} from './api/mock.server';
+
+server();
+
 ReactDOM.render(
   <React.StrictMode>
     <StoreProvider>

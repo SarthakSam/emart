@@ -5,7 +5,7 @@ export function Nav() {
         <nav className = "nav nav--custom">
             <a href="./index.html" className="nav__title"> E Commerce </a>
             <input type="checkbox" id="nav--custom__toggler" className="nav__toggler" />
-            <label for="nav--custom__toggler" className="nav__toggler--button">
+            <label htmlFor="nav--custom__toggler" className="nav__toggler--button">
                 <i className="fa fa-bars" aria-hidden="true"></i>
             </label>
             <div className="nav__content">

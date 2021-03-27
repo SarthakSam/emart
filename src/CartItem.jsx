@@ -11,14 +11,14 @@ export function CartItem( { product = {} } ) {
 
     console.log(product);
     return (
-        <li class="col-5 col-xl-7 col-md-9 col-sm-12">
-            <div class="card card--horizontal">
-                <div class="card__img col-6 p-0 m-0">
+        <li className="col-5 col-xl-7 col-md-9 col-sm-12">
+            <div className="card card--horizontal">
+                <div className="card__img col-6 p-0 m-0">
                     <img src="https://images.unsplash.com/photo-1616623653304-4e878e186568?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60" alt="" />
                 </div>
-                <div class="card__content">
-                    <p class="card__title">{ product.name }</p>
-                    <p class="card__description">{ product.description }</p>
+                <div className="card__content">
+                    <p className="card__title">{ product.name }</p>
+                    <p className="card__description">{ product.description }</p>
                     <p className="card__meta">Price: { product.price }</p>
                     <p className="card__meta">Quantity: { product.quantity }</p>
                     <div className="card__footer">
