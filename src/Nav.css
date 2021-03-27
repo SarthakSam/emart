@@ -1,0 +1,25 @@
+.nav.nav--custom {
+    padding: 0.7em 1em;
+    border-bottom: 1px solid var(--color-grey);
+    box-shadow: 0 0 1px rgb(67 90 111 / 47%), 0 2px 4px -2px rgb(67 90 111 / 30%);
+    /* position: fixed; */
+    width: 100%;
+    /* z-index: 99999; */
+    background-color: white;
+}
+
+@media screen and (max-width: 710px) {
+    .nav #nav--custom__toggler:checked ~ .nav__content {
+        height: 120px;
+        box-shadow: 0 0 1px rgb(67 90 111 / 47%), 0 2px 4px -2px rgb(67 90 111 / 30%);
+    }
+}
+
+.nav--custom .nav__item.active {
+    color: var(--color-blue);
+    background-color: var(--app-primary-color);
+}
+
+.nav.nav--custom .nav__content {
+    background-color: white;
+}
