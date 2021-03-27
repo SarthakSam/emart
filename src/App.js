@@ -8,8 +8,11 @@ function App() {
   return (
     <div>
         <Nav />
-        <ProductListing />     
-        <Cart />   
+        <h1>Products</h1>
+        <ProductListing />
+        <h1>Cart</h1>
+        <Cart />
+        <h1>WishList</h1>
         <WishList />
     </div>
   );
