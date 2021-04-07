@@ -6,9 +6,9 @@ export function server() {
         product: Model,
       },
       routes() {
-        this.namespace = "api";
+        // this.namespace = "api";
         this.timing = 3000;
-        this.get('/api/products',(schema,request)=>{
+        this.get('/api/products',(schema)=>{
           return schema.products.all();
         });
         this.post('/api/products',(schema,request)=>{
