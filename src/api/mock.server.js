@@ -1,4 +1,5 @@
-import { createServer, Model } from "miragejs"
+import { createServer, Model } from "miragejs";
+import { data } from './mockdata';
  
 export function server() {
   createServer({
@@ -17,10 +18,13 @@ export function server() {
         });
       },
       seeds(server){
-          server.create("product",{name:"product1"});
-          server.create("product",{name:"product2"});
-          server.create("product",{name:"product3"});
-          server.create("product",{name:"product4"});
+          data.forEach(element => {
+            server.create("product", element);
+          });
+          // server.create("product",{name:"product1"});
+          // server.create("product",{name:"product2"});
+          // server.create("product",{name:"product3"});
+          // server.create("product",{name:"product4"});
       }
   })
 }
