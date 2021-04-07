@@ -2,8 +2,15 @@ import styles from './App.module.css';
 import { Nav } from '../nav/Nav';
 import { Sidenav } from '../sidenav/Sidenav';
 import { Content } from '../content/Content';
+import { Loader } from '../../components/loader/Loader';
+import { NotificationContainer } from '../../components/notification/Notification-container';
+import { useLoader } from '../../contexts/loader-context';
+import { useNotifications } from '../../contexts/notifications-context';
 
 function App() {
+    const { loading } = useLoader();
+    const { notifications } = useNotifications();
+
 
 //   async function post() {
 //     let resp = await fetch('api/products', {
@@ -37,8 +44,8 @@ function App() {
       <div className={ styles.content__container }>
         <Content />
       </div>      
-      {/* <Loader loading = { loading } />
-      <NotificationContainer notifications = { notifications } /> */}
+       <Loader loading = { loading } />
+      <NotificationContainer notifications = { notifications } />
     </div>
   );
 }

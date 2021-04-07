@@ -4,20 +4,26 @@ import axios from 'axios';
 
 import { getProducts as getProductsURL } from '../../utils/api.config';
 import styles from './Content.module.css';
+import { useStore } from '../../contexts/store.context';
+import { useNotifications } from '../../contexts/notifications-context';
+import { InitializeProducts } from '../../actions';
+import { useLoader } from '../../contexts/loader-context';
 
 export function Content() {
-    // const { dispatch } = useStore();
-    // const { setLoading } = useLoader();
-    // const { showNotification } = useNotifications();
+    const { dispatch } = useStore();
+    const { setLoading } = useLoader();
+    const { showErrorMessage } = useNotifications();
 
     const getProducts = async () => {
+        setLoading(true);
         try {
-            const resp = axios.get(getProductsURL);
-            console.log(resp);
+            const resp = await axios.get(getProductsURL);
+            dispatch( new InitializeProducts(resp.data.products) );
         } catch(err) {
             console.log(err);
+            showErrorMessage(err);
         } finally {
-
+            setLoading(false);
         }
 
     }

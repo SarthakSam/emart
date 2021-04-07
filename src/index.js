@@ -4,16 +4,23 @@ import './index.css';
 import App from './containers/app/App';
 import reportWebVitals from './reportWebVitals';
 
-import { StoreProvider } from './Store.js';
+import { StoreProvider } from './contexts/store.context';
+import { LoaderProvider } from './contexts/loader-context';
+import { NotificationsProvider } from './contexts/notifications-context';
 
 import {server} from './api/mock.server';
+
 
 server();
 
 ReactDOM.render(
   <React.StrictMode>
     <StoreProvider>
-      <App />
+      <LoaderProvider>
+        <NotificationsProvider>
+          <App />
+        </NotificationsProvider>
+      </LoaderProvider>
     </StoreProvider>
   </React.StrictMode>,
   document.getElementById('root')
