@@ -9,6 +9,8 @@ import { useNotifications } from '../../contexts/notifications-context';
 import { InitializeProducts } from '../../actions';
 import { useLoader } from '../../contexts/loader-context';
 
+import { ProductListing } from './product-listing/ProductsListing';
+
 export function Content() {
     const { dispatch } = useStore();
     const { setLoading } = useLoader();
@@ -46,6 +48,8 @@ export function Content() {
                 <Route path="playlist/:id" element={<Playlist />} />
             </Routes> */}
             
+            <ProductListing />
+
             {/* { path === 'home' && <VideoListing />}
             { path === 'uploads/new' && 
                 <VideoProvider>
