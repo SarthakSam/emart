@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import axios from 'axios';
-// import { Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+
 
 import { getProducts as getProductsURL } from '../../utils/api.config';
 import styles from './Content.module.css';
@@ -10,6 +11,7 @@ import { InitializeProducts } from '../../actions';
 import { useLoader } from '../../contexts/loader-context';
 
 import { ProductListing } from './product-listing/ProductsListing';
+import { ProductDetails } from './product-details/ProductDetails';
 
 export function Content() {
     const { dispatch } = useStore();
@@ -38,27 +40,13 @@ export function Content() {
 
     return (
         <div className = { styles.content }>
-             {/* <Routes>
-                <Route path="/" element={<VideoListing />} />
-                <Route path="/home" element={<VideoListing />} />
-                <Route path="/uploads/new" element={ <VideoProvider>
-                    <NewVideo />
-                </VideoProvider>} />
-                <Route path="watch/:id" element={<Watch />} />
-                <Route path="playlist/:id" element={<Playlist />} />
-            </Routes> */}
-            
-            <ProductListing />
-
-            {/* { path === 'home' && <VideoListing />}
-            { path === 'uploads/new' && 
-                <VideoProvider>
-                    <NewVideo />
-                </VideoProvider>
-             }
-            { path === 'history' && <Playlist id = "history"  /> }
-            { path === 'playlist' && <Playlist id = { params } /> }
-            { path === 'watch' && <Watch id = { params } /> } */}
+              <Routes>
+                <Route path="/" element={<ProductListing />} />
+                <Route path="/products" element={<ProductListing />} />
+                <Route path="/product/:id" element={ <ProductDetails /> } />
+             {/*   <Route path="watch/:id" element={<Watch />} />
+                <Route path="playlist/:id" element={<Playlist />} /> */}
+            </Routes> 
         </div>
     )
 }

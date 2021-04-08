@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './containers/app/App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import { StoreProvider } from './contexts/store.context';
 import { LoaderProvider } from './contexts/loader-context';
@@ -15,13 +16,15 @@ server();
 
 ReactDOM.render(
   <React.StrictMode>
-    <StoreProvider>
-      <LoaderProvider>
-        <NotificationsProvider>
-          <App />
-        </NotificationsProvider>
-      </LoaderProvider>
-    </StoreProvider>
+    <Router>
+      <StoreProvider>
+        <LoaderProvider>
+          <NotificationsProvider>
+            <App />
+          </NotificationsProvider>
+        </LoaderProvider>
+      </StoreProvider>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );

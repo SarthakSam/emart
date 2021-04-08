@@ -1,7 +1,9 @@
 import { actions } from '../../actions';
 
 export const initialState = {
-    products: []
+    products: [],
+    cart: [],
+    wishlisted: []
 }
 
 export function reducer(state, action) {

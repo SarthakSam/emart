@@ -1,0 +1,10 @@
+.wishlistIcon {
+    font-size: var(--font-2);
+    fill: red;
+    cursor: pointer;
+}
+
+.image {
+    border: 1px solid var(--color-light-grey);
+    box-shadow: 0 0 3px 3px var(--color-light-grey);
+}

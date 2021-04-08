@@ -1,12 +1,17 @@
 // import { FaHeart, FaRegHeart } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+
 
 import styles from './Product.module.css';
+
 // import { useStore } from '../Store';
 // import { Icons } from '../Icons';
 // import { AddToCart, AddToWishList, RemoveFromWishList } from '../actions';
 
 
 export function Product( { id, title, price, description, category, image } ) {
+    const navigate = useNavigate();
+
     // const { dispatch } = useStore();
     
     // const addProductToCart = (item) => dispatch( new AddToCart(item) );
@@ -15,8 +20,12 @@ export function Product( { id, title, price, description, category, image } ) {
 
     // const removeFromWishList = (item) => dispatch( new RemoveFromWishList(item) );
 
+    const showProduct = (id) => {
+        navigate(`/product/${id}`);
+    }
+
     return (
-        <li className = { styles.card + " card col-3 col-xl-4 col-lg-4 col-md-6 col-sm-12" }>
+        <li className = { styles.card + " card col-3 col-xl-4 col-lg-4 col-md-6 col-sm-12"} onClick = { () => showProduct(id) }>
             
             <div className = { `card__img` }>
                 <img  className={ styles.img } src={image} alt="" />
