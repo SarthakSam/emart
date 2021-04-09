@@ -1,18 +1,23 @@
-// import { FaHeart, FaRegHeart } from 'react-icons/fa';
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 
 import styles from './Product.module.css';
+import { useStore } from '../../../../contexts/store.context';
+import { useEffect, useState } from 'react';
+import { RemoveFromWishlist, AddToWishlist } from '../../../../actions';
 
-// import { useStore } from '../Store';
-// import { Icons } from '../Icons';
-// import { AddToCart, AddToWishList, RemoveFromWishList } from '../actions';
 
-
-export function Product( { id, title, price, description, category, image } ) {
+export function Product( { product } ) {
     const navigate = useNavigate();
+    const { state: { wishlist },dispatch } = useStore();
+    const [isWishlisted, setIsWishlisted] = useState(false);
+    
+    useEffect( () => {
+        const isWishisted = !!wishlist.find( item => product.id === item.id);
+        setIsWishlisted(isWishisted);
+    } , [product, wishlist]);
 
-    // const { dispatch } = useStore();
     
     // const addProductToCart = (item) => dispatch( new AddToCart(item) );
 
@@ -20,24 +25,41 @@ export function Product( { id, title, price, description, category, image } ) {
 
     // const removeFromWishList = (item) => dispatch( new RemoveFromWishList(item) );
 
-    const showProduct = (id) => {
-        navigate(`/product/${id}`);
+    const wishlistClicked = (event) => {
+        event.stopPropagation();
+        if(isWishlisted) {
+            dispatch( new RemoveFromWishlist(product));
+        } else {
+            dispatch( new AddToWishlist(product));
+        }
+        setIsWishlisted(val => !val);
+    }
+
+    const showProduct = () => {
+        navigate(`/product/${product.id}`);
     }
 
     return (
-        <li className = { styles.card + " card col-3 col-xl-4 col-lg-4 col-md-6 col-sm-12"} onClick = { () => showProduct(id) }>
+        <li className = { styles.card + " card col-3 col-xl-4 col-lg-4 col-md-6 col-sm-12"} onClick = { () => showProduct() }>
             
-            <div className = { `card__img` }>
-                <img  className={ styles.img } src={image} alt="" />
+            <div className = { `card__img badge__container` }>
+                <img  className={ styles.img } src={product.image} alt="" />
+                <span className={ `badge ${ styles.wishlistIcon }` } onClick = { wishlistClicked } >
+                        {
+                            isWishlisted? 
+                            <FaHeart style={{fill: 'inherit'}} /> :
+                            <FaRegHeart style={{fill: 'inherit'}} />
+                        }
+                </span>
             </div>
 
             <div className="card__body">
                 
-                <p className="card__lead">Goodnites Nighttime Bedwetting Underwear, Boys' S/M (43-68 lb.), 44 Ct</p>
+                <p className="card__lead">{product.title}</p>
                 <p className="card__meta">By GoodNites</p>
                 <span className={ `pill bg-blue text-white ${styles.rating}` }>4.5 *</span>
                
-                <p className={ styles.price }>Rs 1992</p>
+                <p className={ styles.price }>Rs {product.price}</p>
 
             </div>
         </li>

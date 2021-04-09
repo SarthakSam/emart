@@ -18,7 +18,7 @@ export function reducer(state, action) {
 }
 
 function removeFromWishlist(state, action) {
-    return { ...state, wishlist: state.wishlist.filter( product => product.id === action.payload.id ) };
+    return { ...state, wishlist: state.wishlist.filter( product => product.id !== action.payload.id ) };
 }
 
 function addToCart(state, action) {

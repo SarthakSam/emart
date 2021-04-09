@@ -9,7 +9,7 @@ export function ProductListing() {
         <div>
             <ul className = "row">
                 {
-                    products.map( product => <Product key = { product.id } { ...product } /> )
+                    products.map( product => <Product key = { product.id } product= { product } /> )
                 }
             </ul>
         </div>
