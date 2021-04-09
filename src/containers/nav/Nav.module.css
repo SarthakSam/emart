@@ -22,6 +22,7 @@ nav {
     display: flex;
     position: relative;
     align-items: center;
+    text-decoration: none;
 }
 
 .nav__title > img {

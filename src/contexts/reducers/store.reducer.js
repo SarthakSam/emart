@@ -34,7 +34,7 @@ function addToCart(state, action) {
 function removeFromCart(state, action) {
     const product = state.cart.find( product => product.id === action.payload.id );
     const filteredCart = state.cart.filter( product => product.id !== action.payload.id);
-    if( product.quantity == 1 ) {
+    if( product.quantity === 1 ) {
         return { ...state, cart: filteredCart};
     }
     else {

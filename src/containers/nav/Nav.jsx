@@ -7,10 +7,10 @@ export function Nav(x) {
 
     return (
         <nav className = "nav">
-            <span className={`nav__title ${ styles.nav__title }`}>
-                {/* <img src="logo.jpg" alt=""/>     */}
-                Buyit
-            </span>
+            <Link  className={`nav__title ${ styles.nav__title }`} to="/">
+                {/* <FaShoppingCart /> */}
+                    Buyit
+            </Link>
             <div className="nav__content">
                 <ul className={"nav__list " + styles.search__input__container}>
                     <li className={"input input--icon " + styles.search__input}>

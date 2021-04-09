@@ -32,15 +32,15 @@ export function ProductDetails() {
 
     const wishlistClicked = () => {
         if(isWishlisted) {
-            dispatch( new RemoveFromWishlist({ id }));
+            dispatch( new RemoveFromWishlist(product));
         } else {
-            dispatch( new AddToWishlist({ id }));
+            dispatch( new AddToWishlist(product));
         }
         setIsWishlisted(val => !val);
     }
 
     const addToCart = () => {
-        dispatch( new AddToCart( { id } ))
+        dispatch( new AddToCart( product ))
     }
 
     return (
