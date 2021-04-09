@@ -1,5 +1,6 @@
 import styles from './Nav.module.css';
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch, FaShoppingCart, FaHeart } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 export function Nav(x) {
 
@@ -18,7 +19,14 @@ export function Nav(x) {
                     </li>
                 </ul>
                 <ul className="nav__list">
-                    <li className="nav__item">Sarthak</li>                
+                    <Link className={`nav__item ${styles.nav__link}`} to="/wishlist">
+                        <FaHeart />
+                        Wishlist
+                        </Link>
+                    <Link  className={`nav__item ${styles.nav__link}`} to="/cart">
+                        <FaShoppingCart />
+                        Cart
+                    </Link>
                 </ul>
             </div>
         </nav>
